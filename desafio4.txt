@@ -1,0 +1,30 @@
+1. QoS (Quality of Service) – indica o nível de
+verificação de recebimento de mensagens pelo
+servidor (publish) ou pelo cliente (subscribe)
+
+▪ QoS 0: Somente envia a mensagem e o subscriber pode receber ou não.
+
+▪ QoS 1: Envia a mensagem e se não receber um aviso de recepção envia novamente.
+
+▪ QoS 2: Envia a mensagem que passa por uma verificação de 
+quatro etapas para garantir que a mensagem seja recebida somente uma vez.
+
+
+2. Caracteres coringa na subscrição de tópicos:
+a. Níveis múltiplos (multi-level): o caractere ‘#’
+▪ Vai receber todas as mensagens de topicos que tenham o padrão antes antes do caracter '#'
+	exemplo:
+		subscriber -> viniciusSantos/1/#
+		recebe -> viniciusSantos/1/home/quarto
+		recebe -> viniciusSantos/1/apartamento/quarto
+		não recebe -> viniciusSantos/2/home/quarto
+
+b. Nível simples (single-level): o caractere ‘+’
+▪ Vai receber todas as menssagens de topicos  que tenham uma outra string no lugar do caracter '+'
+	exemplo:
+		subscriber -> viniciusSantos/1/+/luz
+		recebe -> viniciusSantos/1/home/luz
+		recebe -> viniciusSantos/1/apartamento/luz
+		não recebe -> viniciusSantos/1/apartamento/agua
+		não recebe -> viniciusSantos/2/apartamento/luz
+		não recebe -> viniciusSantos/1/apartamento/quarto/luz
